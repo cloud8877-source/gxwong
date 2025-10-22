@@ -18,8 +18,7 @@ export interface NavLink {
 }
 
 export interface ProcessStep {
-  step: string;
-  icon: React.ReactNode;
   title: string;
-  description: string;
+  content: string;
+  image: string;
 }
