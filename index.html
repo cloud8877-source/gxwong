@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malaysia Estate Planner | Secure Your Legacy</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Professional estate planning services in Malaysia, including will drafting, trust setup, and life insurance review. Secure your family's future with expert guidance.">
+  <meta name="keywords" content="estate planning malaysia, will writing, trust setup, life insurance, legacy planning, johor bahru">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "EstateWealth MY",
+    "image": "https://scontent.fkul3-5.fna.fbcdn.net/v/t39.30808-6/538799227_1183663956902286_1566685595467441692_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=DzaNeTRSnj0Q7kNvwHo8Rq3&_nc_oc=AdlkeHCIKX6OrtgqmkUG0GtTEYsq0ezw8jq-SAdmS5CcLAfndpNSXS-YhbAtdVPAaAQkU2R4S09syWOl1qRGc8bo&_nc_zt=23&_nc_ht=scontent.fkul3-5.fna&_nc_gid=U_tOFjcI-tK10EqOwDhM-g&oh=00_Afd597igRxiUVR1ngGAKMwr2i5x6VRBpdVRNAeuATm2kJw&oe=68FED52C",
+    "telephone": "+60108828127",
+    "email": "cloud8877@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Johor Bahru",
+      "addressCountry": "MY"
+    },
+    "url": "#",
+    "description": "Professional estate planning services in Malaysia, including will drafting, trust setup, and life insurance review.",
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Will Draft" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Trust Setup" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Life Insurance Review & Insurance Trust Setup" } }
+    ]
+  }
+  </script>
+
+  <!-- JS Import Map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://aistudiocdn.com/react@^19.2.0",
+      "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+      "react/": "https://aistudiocdn.com/react@^19.2.0/"
+    }
+  }
+  </script>
+
+  <!-- Custom Styles for Animations & Components -->
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    @keyframes grid {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-60px); }
+    }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    /* Testimonial Stack Styles */
+    .testimonials-stack {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      min-height: 420px;
+      margin: 2rem auto;
+      perspective: 1200px;
+    }
+    .testimonial-card {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      border-radius: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px 0 rgba(100, 116, 139, 0.1);
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      cursor: grab;
+    }
+    .testimonial-card.is-dragging {
+        transition: none;
+    }
+    .testimonial-card:active {
+        cursor: grabbing;
+    }
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+    .pagination {
+        position: absolute;
+        bottom: -2.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 0.5rem;
+        z-index: 999;
+    }
+    .pagination-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 99px;
+        background-color: #d1d5db; /* gray-300 */
+        transition: all 0.3s;
+        cursor: pointer;
+        border: none;
+    }
+    .pagination-dot.active {
+        background-color: #059669; /* green-600 */
+        width: 24px;
+    }
+  </style>
+
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
