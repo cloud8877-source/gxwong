@@ -122,34 +122,34 @@ const TestimonialStack = ({ testimonials }: { testimonials: TestimonialType[] })
         }
 
         const tagClasses = (type: 'featured' | 'default') => type === 'featured' 
-          ? 'bg-green-100 text-green-800 border border-green-200' 
-          : 'bg-stone-100 text-stone-700';
+          ? 'bg-slate-700 text-stone-100 border border-slate-600' 
+          : 'bg-slate-800 text-stone-300';
           
         return (
           <div
             ref={el => { cardRefs.current[index] = el; }}
             key={testimonial.id}
-            className="testimonial-card glass-effect"
+            className="testimonial-card"
             style={style}
             onMouseDown={(e) => handleDragStart(e, index)}
             onTouchStart={(e) => handleDragStart(e, index)}
           >
-            <div className="p-6 md:p-8 text-stone-800">
+            <div className="p-6 md:p-8 text-stone-200 bg-slate-800/70 backdrop-blur-md border border-slate-700/50 rounded-2xl">
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-white font-semibold text-lg" style={{ background: testimonial.avatarGradient }}>
                     {testimonial.initials}
                   </div>
                   <div>
-                    <h3 className="text-green-900 font-bold text-lg">{testimonial.name}</h3>
-                    <p className="text-sm text-stone-500 mt-1">{testimonial.role}</p>
+                    <h3 className="text-white font-bold text-lg">{testimonial.name}</h3>
+                    <p className="text-sm text-slate-400 mt-1">{testimonial.role}</p>
                   </div>
                 </div>
               </div>
               
-              <blockquote className="text-stone-700 leading-relaxed text-base mb-6">"{testimonial.quote}"</blockquote>
+              <blockquote className="text-stone-300 leading-relaxed text-base mb-6">"{testimonial.quote}"</blockquote>
               
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-t border-stone-200/80 pt-4 gap-4">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-t border-slate-700/80 pt-4 gap-4">
                 <div className="flex flex-wrap gap-2">
                   {testimonial.tags.map((tag, i) => (
                     <span key={i} className={['text-xs', 'px-2.5', 'py-1', 'rounded-full', 'font-medium', tagClasses(tag.type)].join(' ')}>
@@ -157,13 +157,13 @@ const TestimonialStack = ({ testimonials }: { testimonials: TestimonialType[] })
                     </span>
                   ))}
                 </div>
-                <div className="flex items-center gap-4 text-xs text-stone-500">
+                <div className="flex items-center gap-4 text-xs text-slate-400">
                   {testimonial.stats.map((stat, i) => {
                     const IconComponent = statIconMap[stat.icon];
                     if (!IconComponent) return null;
                     return (
                       <span key={i} className="flex items-center">
-                        <IconComponent className="mr-1.5 h-4 w-4 text-amber-600" />
+                        <IconComponent className="mr-1.5 h-4 w-4 text-slate-400" />
                         {stat.text}
                       </span>
                     );
@@ -188,11 +188,11 @@ const TestimonialStack = ({ testimonials }: { testimonials: TestimonialType[] })
 const Testimonials: React.FC = () => {
     const { t } = useLanguage();
     return (
-        <section id="testimonials" className="py-20 md:py-28 bg-stone-100 overflow-hidden">
+        <section id="testimonials" className="py-20 md:py-28 bg-slate-900 overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-green-900 tracking-tight">{t.testimonials.title}</h2>
-                    <p className="text-stone-600 mt-3 text-lg">{t.testimonials.subtitle}</p>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">{t.testimonials.title}</h2>
+                    <p className="text-slate-400 mt-3 text-lg">{t.testimonials.subtitle}</p>
                 </div>
                 <TestimonialStack testimonials={t.testimonials.items} />
             </div>

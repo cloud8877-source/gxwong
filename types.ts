@@ -1,25 +1,35 @@
 import React from 'react';
 
-export interface Service {
-  icon: string; // Changed from React.ReactNode
-  title: string;
-  description: string[];
+export interface TestimonialStat {
+  icon: string;
+  text: string;
+}
+
+export interface TestimonialTag {
+  type: 'featured' | 'default';
+  text: string;
 }
 
 export interface Testimonial {
-  id: string | number;
-  initials: string;
+  id: number;
   name: string;
   role: string;
-  quote: string;
-  tags: { text: string; type: 'featured' | 'default' }[];
-  stats: { icon: string; text: string; }[]; // Changed from ComponentType
+  initials: string;
   avatarGradient: string;
+  quote: string;
+  tags: TestimonialTag[];
+  stats: TestimonialStat[];
 }
 
-export interface NavLink {
-  href: string;
-  label: string;
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface Service {
+  icon: string;
+  title: string;
+  description: string;
 }
 
 export interface ProcessStep {
@@ -28,14 +38,21 @@ export interface ProcessStep {
   image: string;
 }
 
-export interface FAQItem {
-  question: string;
-  answer: string;
+export interface NavLink {
+    href: string;
+    label: string;
 }
 
 export interface AboutContent {
     title: string;
+    profilePictureUrl: string;
     paragraphs: string[];
     quote: string;
-    image: string;
+}
+
+export interface CtaSectionContent {
+    headline: string;
+    subtext: string;
+    buttonText: string;
+    buttonLink: string;
 }

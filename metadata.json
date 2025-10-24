@@ -1,5 +1,43 @@
 {
   "name": "Malaysia Estate Planner | Secure Your Legacy",
   "description": "Professional estate planning services in Malaysia, including will drafting, trust setup, and life insurance review. Secure your family's future with expert guidance.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "structuredData": {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "EstateWealth MY",
+    "image": "https://i.ibb.co/s9KVGHsZ/Generated-Image-October-21-2025-3-52-PM.webp",
+    "telephone": "+60108828127",
+    "email": "cloud8877@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Johor Bahru",
+      "addressCountry": "MY"
+    },
+    "url": "#",
+    "description": "Professional estate planning services in Malaysia, including will drafting, trust setup, and life insurance review.",
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Will Draft"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Trust Setup"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Life Insurance Review & Insurance Trust Setup"
+        }
+      }
+    ]
+  }
 }

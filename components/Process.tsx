@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
-
-const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(' ');
+import { cn } from '../lib/utils';
 
 export const Process: React.FC = () => {
   const { t } = useLanguage();
@@ -18,10 +17,10 @@ export const Process: React.FC = () => {
   }, [features.length, autoPlayInterval]);
 
   return (
-    <section id="process" className="py-20 md:py-28 bg-stone-100">
+    <section id="process" className="py-20 md:py-28 bg-slate-900">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-green-900 tracking-tight">{t.process.title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">{t.process.title}</h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
@@ -36,8 +35,8 @@ export const Process: React.FC = () => {
                   className={cn(
                     "w-10 h-10 md:w-12 md:h-12 rounded-full flex-shrink-0 flex items-center justify-center border-2 transition-all duration-300",
                     index === currentFeature
-                      ? "bg-green-600 border-green-700 text-white scale-110"
-                      : "bg-white border-stone-300 text-stone-500",
+                      ? "bg-amber-400 border-amber-400 text-slate-900 scale-110"
+                      : "bg-slate-800 border-slate-700 text-slate-400",
                   )}
                 >
                   {index <= currentFeature ? (
@@ -48,8 +47,8 @@ export const Process: React.FC = () => {
                 </div>
 
                 <div className={cn("transition-opacity duration-300", index === currentFeature ? 'opacity-100' : 'opacity-60 hover:opacity-100')}>
-                  <h3 className="text-xl md:text-2xl font-bold text-green-900">{feature.title}</h3>
-                  <p className="text-md text-stone-600 mt-1">{feature.content}</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-white">{feature.title}</h3>
+                  <p className="text-md text-slate-400 mt-1">{feature.content}</p>
                 </div>
               </div>
             ))}

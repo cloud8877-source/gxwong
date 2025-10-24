@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF--8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Malaysia Estate Planner | Secure Your Legacy</title>
   
@@ -43,17 +43,32 @@
 
   <!-- JS Import Map -->
   <script type="importmap">
-  {
-    "imports": {
-      "react": "https://aistudiocdn.com/react@^19.2.0",
-      "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-      "react/": "https://aistudiocdn.com/react@^19.2.0/"
-    }
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^11.2.10",
+    "tailwind-merge": "https://aistudiocdn.com/tailwind-merge@^3.3.1",
+    "clsx": "https://aistudiocdn.com/clsx@^2.1.1"
   }
-  </script>
+}
+</script>
 
   <!-- Custom Styles for Animations & Components -->
   <style>
+    :root {
+      --white: #ffffff;
+      --black: #000000;
+      --zinc-50: #fafafa;
+      --zinc-900: #18181b;
+      --blue-500: #3b82f6;
+      --indigo-300: #a5b4fc;
+      --blue-300: #93c5fd;
+      --violet-200: #ddd6fe;
+      --blue-400: #60a5fa;
+      --transparent: transparent;
+    }
     html {
       scroll-behavior: smooth;
     }
@@ -62,13 +77,12 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    @keyframes grid {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(-60px); }
-    }
-    @keyframes spin {
+    @keyframes aurora {
+      from {
+        background-position: 50% 50%, 50% 50%;
+      }
       to {
-        transform: rotate(360deg);
+        background-position: 350% 50%, 350% 50%;
       }
     }
     /* Testimonial Stack Styles */
@@ -86,8 +100,6 @@
       left: 0;
       width: 100%;
       border-radius: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 32px 0 rgba(100, 116, 139, 0.1);
       transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       cursor: grab;
     }
@@ -96,12 +108,6 @@
     }
     .testimonial-card:active {
         cursor: grabbing;
-    }
-    .glass-effect {
-        background: rgba(255, 255, 255, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.18);
     }
     .pagination {
         position: absolute;
@@ -116,7 +122,7 @@
         width: 10px;
         height: 10px;
         border-radius: 99px;
-        background-color: #d1d5db; /* gray-300 */
+        background-color: #475569; /* slate-600 */
         transition: all 0.3s;
         cursor: pointer;
         border: none;
