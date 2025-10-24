@@ -139,7 +139,7 @@ const enContent = {
                     { icon: BuildingOffice2Icon, text: 'SME Founder' },
                     { icon: UserGroupIcon, text: 'Family of 5' },
                 ],
-                avatarGradient: 'linear-gradient(to top right, #34d399, #065f46)',
+                avatarGradient: 'linear-gradient(to top right, #a7f3d0, #14532d)',
             },
             {
                 id: 2,
@@ -154,7 +154,7 @@ const enContent = {
                 stats: [
                     { icon: UserGroupIcon, text: '2 Children' },
                 ],
-                avatarGradient: 'linear-gradient(to top right, #fb923c, #b91c1c)',
+                avatarGradient: 'linear-gradient(to top right, #fcd34d, #b45309)',
             },
             {
                 id: 3,
@@ -169,7 +169,7 @@ const enContent = {
                 stats: [
                     { icon: UserGroupIcon, text: '3 Beneficiaries' },
                 ],
-                avatarGradient: 'linear-gradient(to top right, #60a5fa, #1e3a8a)',
+                avatarGradient: 'linear-gradient(to top right, #fde68a, #78350f)',
             },
         ] as Testimonial[],
     },
@@ -333,7 +333,7 @@ const cnContent = {
                     { icon: BuildingOffice2Icon, text: '中小企业创始人' },
                     { icon: UserGroupIcon, text: '五口之家' },
                 ],
-                avatarGradient: 'linear-gradient(to top right, #34d399, #065f46)',
+                avatarGradient: 'linear-gradient(to top right, #a7f3d0, #14532d)',
             },
             {
                 id: 2,
@@ -348,7 +348,7 @@ const cnContent = {
                 stats: [
                     { icon: UserGroupIcon, text: '2个孩子' },
                 ],
-                avatarGradient: 'linear-gradient(to top right, #fb923c, #b91c1c)',
+                avatarGradient: 'linear-gradient(to top right, #fcd34d, #b45309)',
             },
             {
                 id: 3,
@@ -363,7 +363,7 @@ const cnContent = {
                 stats: [
                     { icon: UserGroupIcon, text: '3位受益人' },
                 ],
-                avatarGradient: 'linear-gradient(to top right, #60a5fa, #1e3a8a)',
+                avatarGradient: 'linear-gradient(to top right, #fde68a, #78350f)',
             },
         ] as Testimonial[],
     },

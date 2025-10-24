@@ -52,7 +52,7 @@ const ContactForm: React.FC = () => {
             case 'error':
                  return <div className={`${baseClasses} bg-red-100 text-red-800`}>{t.contact.status.error}</div>;
             case 'loading':
-                return <div className={`${baseClasses} bg-blue-100 text-blue-800`}>{t.contact.status.loading}</div>;
+                return <div className={`${baseClasses} bg-green-100 text-green-800`}>{t.contact.status.loading}</div>;
             default:
                 return null;
         }
@@ -61,11 +61,11 @@ const ContactForm: React.FC = () => {
 
     return (
         <section id="contact" className="py-20 md:py-28 bg-white">
-            <form className="flex flex-col items-center text-sm text-slate-800" onSubmit={handleSubmit}>
+            <form className="flex flex-col items-center text-sm text-stone-800" onSubmit={handleSubmit}>
                 <p className="text-xs bg-green-200 text-green-800 font-medium px-3 py-1 rounded-full">{t.navLinks.find(l => l.href ==='#contact')?.label}</p>
                 <h2 className="text-4xl font-bold py-4 text-center text-green-900">{t.contact.title}</h2>
-                <p className="max-md:text-sm text-gray-500 pb-10 text-center">
-                    {t.contact.subtitleManual} <a href="mailto:cloud8877@gmail.com" className="text-green-600 hover:underline">cloud8877@gmail.com</a>
+                <p className="max-md:text-sm text-stone-500 pb-10 text-center">
+                    {t.contact.subtitleManual} <a href="mailto:cloud8877@gmail.com" className="text-amber-600 hover:underline">cloud8877@gmail.com</a>
                 </p>
 
                 <div className="max-w-md w-full px-4">
@@ -75,7 +75,7 @@ const ContactForm: React.FC = () => {
                         <>
                             <div className="mb-4">
                                 <label htmlFor="name" className="font-medium sr-only">{t.contact.form.name}</label>
-                                <div className="flex items-center mt-2 h-12 pl-4 border border-slate-300 rounded-full focus-within:ring-2 focus-within:ring-green-400 transition-all overflow-hidden">
+                                <div className="flex items-center mt-2 h-12 pl-4 border border-stone-300 rounded-full focus-within:ring-2 focus-within:ring-amber-400 transition-all overflow-hidden">
                                     <UserIcon />
                                     <input type="text" name="name" id="name" value={formData.name} onChange={handleChange} className="h-full px-3 w-full outline-none bg-transparent" placeholder={t.contact.form.name} required />
                                 </div>
@@ -83,7 +83,7 @@ const ContactForm: React.FC = () => {
                     
                             <div className="mb-4">
                                 <label htmlFor="email" className="font-medium sr-only">{t.contact.form.email}</label>
-                                <div className="flex items-center mt-2 h-12 pl-4 border border-slate-300 rounded-full focus-within:ring-2 focus-within:ring-green-400 transition-all overflow-hidden">
+                                <div className="flex items-center mt-2 h-12 pl-4 border border-stone-300 rounded-full focus-within:ring-2 focus-within:ring-amber-400 transition-all overflow-hidden">
                                     <EmailIcon />
                                     <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} className="h-full px-3 w-full outline-none bg-transparent" placeholder={t.contact.form.email} required />
                                 </div>
@@ -91,10 +91,10 @@ const ContactForm: React.FC = () => {
                     
                             <div className="mb-4">
                                 <label htmlFor="message" className="font-medium sr-only">{t.contact.form.message}</label>
-                                <textarea name="message" id="message" rows={5} value={formData.message} onChange={handleChange} className="w-full mt-2 p-4 bg-transparent border border-slate-300 rounded-2xl resize-none outline-none focus:ring-2 focus-within:ring-green-400 transition-all" placeholder={t.contact.form.message} required></textarea>
+                                <textarea name="message" id="message" rows={5} value={formData.message} onChange={handleChange} className="w-full mt-2 p-4 bg-transparent border border-stone-300 rounded-2xl resize-none outline-none focus:ring-2 focus-within:ring-amber-400 transition-all" placeholder={t.contact.form.message} required></textarea>
                             </div>
                             
-                            <button type="submit" disabled={status === 'loading'} className="flex items-center justify-center gap-2 mt-5 bg-green-700 hover:bg-green-800 text-white py-3 w-full rounded-full transition disabled:bg-slate-400">
+                            <button type="submit" disabled={status === 'loading'} className="flex items-center justify-center gap-2 mt-5 bg-green-700 hover:bg-green-800 text-white py-3 w-full rounded-full transition disabled:bg-stone-400">
                                 {status === 'loading' ? t.contact.status.loading : t.contact.form.submit}
                                 {status !== 'loading' && <SubmitIcon />}
                             </button>

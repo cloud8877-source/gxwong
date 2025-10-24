@@ -13,7 +13,7 @@ const FAQItem: React.FC<{
     <div className="border-b border-green-200/50">
       <button
         onClick={onClick}
-        className="flex justify-between items-center w-full py-5 text-left focus:outline-none focus-visible:ring focus-visible:ring-green-500 focus-visible:ring-opacity-75"
+        className="flex justify-between items-center w-full py-5 text-left focus:outline-none focus-visible:ring focus-visible:ring-amber-500 focus-visible:ring-opacity-75"
         aria-expanded={isOpen}
       >
         <span className="text-lg font-medium text-green-900">{item.question}</span>
@@ -37,7 +37,7 @@ const FAQItem: React.FC<{
         )}
       >
         <div className="pb-5 pr-10">
-          <p className="text-slate-600 leading-relaxed">{item.answer}</p>
+          <p className="text-stone-600 leading-relaxed">{item.answer}</p>
         </div>
       </div>
     </div>
@@ -53,11 +53,11 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-20 md:py-28 bg-green-50/20">
+    <section id="faq" className="py-20 md:py-28 bg-stone-100">
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-green-900 tracking-tight">{t.faq.title}</h2>
-          <p className="text-slate-600 mt-3 text-lg">{t.faq.subtitle}</p>
+          <p className="text-stone-600 mt-3 text-lg">{t.faq.subtitle}</p>
         </div>
         <div className="max-w-3xl mx-auto">
           {t.faq.items.map((item, index) => (

@@ -103,7 +103,7 @@ const TestimonialStack = ({ testimonials }: { testimonials: TestimonialType[] })
 
         const tagClasses = (type: 'featured' | 'default') => type === 'featured' 
           ? 'bg-green-100 text-green-800 border border-green-200' 
-          : 'bg-slate-100 text-slate-700';
+          : 'bg-stone-100 text-stone-700';
           
         return (
           <div
@@ -114,7 +114,7 @@ const TestimonialStack = ({ testimonials }: { testimonials: TestimonialType[] })
             onMouseDown={(e) => handleDragStart(e, index)}
             onTouchStart={(e) => handleDragStart(e, index)}
           >
-            <div className="p-6 md:p-8 text-slate-800">
+            <div className="p-6 md:p-8 text-stone-800">
               <div className="flex items-start justify-between mb-6">
                 <div className="flex items-center gap-4">
                   <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-white font-semibold text-lg" style={{ background: testimonial.avatarGradient }}>
@@ -122,14 +122,14 @@ const TestimonialStack = ({ testimonials }: { testimonials: TestimonialType[] })
                   </div>
                   <div>
                     <h3 className="text-green-900 font-bold text-lg">{testimonial.name}</h3>
-                    <p className="text-sm text-slate-500 mt-1">{testimonial.role}</p>
+                    <p className="text-sm text-stone-500 mt-1">{testimonial.role}</p>
                   </div>
                 </div>
               </div>
               
-              <blockquote className="text-slate-700 leading-relaxed text-base mb-6">"{testimonial.quote}"</blockquote>
+              <blockquote className="text-stone-700 leading-relaxed text-base mb-6">"{testimonial.quote}"</blockquote>
               
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-t border-slate-200/80 pt-4 gap-4">
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between border-t border-stone-200/80 pt-4 gap-4">
                 <div className="flex flex-wrap gap-2">
                   {testimonial.tags.map((tag, i) => (
                     <span key={i} className={['text-xs', 'px-2.5', 'py-1', 'rounded-full', 'font-medium', tagClasses(tag.type)].join(' ')}>
@@ -137,12 +137,12 @@ const TestimonialStack = ({ testimonials }: { testimonials: TestimonialType[] })
                     </span>
                   ))}
                 </div>
-                <div className="flex items-center gap-4 text-xs text-slate-500">
+                <div className="flex items-center gap-4 text-xs text-stone-500">
                   {testimonial.stats.map((stat, i) => {
                     const IconComponent = stat.icon;
                     return (
                       <span key={i} className="flex items-center">
-                        <IconComponent className="mr-1.5 h-4 w-4 text-green-600" />
+                        <IconComponent className="mr-1.5 h-4 w-4 text-amber-600" />
                         {stat.text}
                       </span>
                     );
@@ -167,11 +167,11 @@ const TestimonialStack = ({ testimonials }: { testimonials: TestimonialType[] })
 const Testimonials: React.FC = () => {
     const { t } = useLanguage();
     return (
-        <section id="testimonials" className="py-20 md:py-28 bg-green-50/30 overflow-hidden">
+        <section id="testimonials" className="py-20 md:py-28 bg-stone-100 overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="text-center max-w-3xl mx-auto mb-12">
                     <h2 className="text-3xl md:text-4xl font-bold text-green-900 tracking-tight">{t.testimonials.title}</h2>
-                    <p className="text-slate-600 mt-3 text-lg">{t.testimonials.subtitle}</p>
+                    <p className="text-stone-600 mt-3 text-lg">{t.testimonials.subtitle}</p>
                 </div>
                 <TestimonialStack testimonials={t.testimonials.items} />
             </div>

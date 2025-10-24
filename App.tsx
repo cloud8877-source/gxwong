@@ -13,7 +13,7 @@ import { LanguageProvider } from './contexts/LanguageContext';
 const App: React.FC = () => {
   return (
     <LanguageProvider>
-      <div className="bg-white text-slate-800">
+      <div className="bg-stone-50 text-stone-800">
         <Header />
         <main>
           <Hero />
