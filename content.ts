@@ -1,456 +1,431 @@
 import React from 'react';
-import type { Service, Testimonial, NavLink, ProcessStep, FAQItem } from './types';
+import { Service, Testimonial, NavLink, ProcessStep, FAQItem } from './types';
 
-// Icons for Services
+// Define SVG icon components used throughout the application.
 const WillIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5, ...props },
-    React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" })
-  )
+    React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5, ...props },
+        React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" })
+    )
 );
-
 const TrustIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5, ...props },
-        React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" })
+     React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5, ...props },
+        React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M9 13.5l2.25 2.25L15 12m6-2.25a8.25 8.25 0 11-16.5 0 8.25 8.25 0 0116.5 0z" })
+    )
+);
+const InsuranceIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5, ...props },
+         React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M19.5 12c0-5.25-4.25-9.5-9.5-9.5S.5 6.75.5 12s4.25 9.5 9.5 9.5 9.5-4.25 9.5-9.5z" }),
+         React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M15.75 9.75 12 13.5l-3.75-3.75" })
     )
 );
 
-// Icons for Testimonials
+const CalendarIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", ...props },
+      React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18" })
+    )
+);
 const ClockIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", ...props},
-        React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" })
-    )
-);
-const ThumbsUpIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", ...props},
-        React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M6.633 10.5c.806 0 1.533-.424 2.033-1.087a.99.99 0 011.734 0c.5.663 1.227 1.087 2.033 1.087m0 0a2.499 2.499 0 012.499 2.499v.001a2.499 2.499 0 01-2.499 2.499h-4.066a2.499 2.499 0 01-2.499-2.499v-.001a2.499 2.499 0 012.499-2.499m5.42-3.11a.99.99 0 00-.547-.547l-3.334-1.333a.99.99 0 00-1.103.344l-1.583 2.926a.99.99 0 01-1.734 0L6.22 5.84a.99.99 0 00-1.103-.344l-3.334 1.333a.99.99 0 00-.547.547l-1.01 3.535a.99.99 0 00.22 1.054l2.25 2.25a.99.99 0 001.4 0l1.94-1.94a.99.99 0 011.4 0l1.94 1.94a.99.99 0 001.4 0l2.25-2.25a.99.99 0 00.22-1.054l-1.01-3.535z" })
+    React.createElement("svg", { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", ...props },
+        React.createElement("path", { strokeLinecap: "round", strokeLinejoin: "round", d: "M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" })
     )
 );
 
-
-interface Content {
-  navLinks: NavLink[];
-  hero: {
-    preTitle: string;
-    subtitle: {
-      regular: string;
-      gradient: string;
-    };
-    description: string;
-    ctaButton: string;
-  };
-  about: {
-    title: string;
-    p1: string;
-    p2: string;
-    quote: string;
-  };
-  services: {
-    title: string;
-    subtitle: string;
-    items: Service[];
-  };
-  process: {
-    title: string;
-    steps: ProcessStep[];
-  };
-  testimonials: {
-    title: string;
-    subtitle: string;
-    items: Testimonial[];
-  };
-  faq: {
-    title: string;
-    subtitle: string;
-    items: FAQItem[];
-  };
-  contact: {
-    title: string;
-    subtitle: string;
-    form: {
-      name: string;
-      email: string;
-      phone: string;
-      message: string;
-      submit: string;
-    };
-    status: {
-      loading: string;
-      success: string;
-      error: string;
-    };
-  };
-  footer: {
-    tagline: string;
-    navigation: string;
-    contact: string;
-    disclaimer: {
-      title: string;
-      text: string;
-    };
-    copyright: string;
-  };
-}
-
-const enContent: Content = {
-  navLinks: [
+const navLinksEn: NavLink[] = [
     { href: '#about', label: 'About Us' },
-    { href: '#services', label: 'Services' },
+    { href: '#services', label: 'Our Services' },
     { href: '#process', label: 'Our Process' },
     { href: '#testimonials', label: 'Testimonials' },
     { href: '#faq', label: 'FAQ' },
     { href: '#contact', label: 'Contact Us' },
-  ],
-  hero: {
-    preTitle: 'Your Legacy, Secured.',
-    subtitle: {
-      regular: 'Professional Estate Planning & ',
-      gradient: 'Will Writing Services',
-    },
-    description: 'We help you protect your assets and ensure your loved ones are taken care of according to your wishes. Plan for the future with confidence.',
-    ctaButton: 'Get a Free Consultation',
-  },
-  about: {
-    title: 'Your Trusted Partner in Estate Planning',
-    p1: 'With years of dedicated experience in Malaysian estate law, I provide personalized and comprehensive estate planning services. My mission is to demystify the process, making it accessible and straightforward for everyone.',
-    p2: 'From drafting legally sound wills to setting up robust trusts, I am committed to safeguarding your legacy and providing peace of mind for you and your family.',
-    quote: '"The best time to plant a tree was 20 years ago. The second best time is now." Planning your estate is planning for your family\'s future.',
-  },
-  services: {
-    title: 'Our Core Services',
-    subtitle: 'Comprehensive solutions to secure your assets and legacy.',
-    items: [
-      {
+];
+
+const servicesEn: Service[] = [
+    {
         icon: React.createElement(WillIcon),
         title: 'Will Writing',
         description: [
-          'Drafting of legally valid wills.',
-          'Appointing executors and guardians.',
-          'Clear distribution of assets.',
-          'Minimizing potential family disputes.',
+            'Drafting of legally valid wills.',
+            'Appointing executors and guardians.',
+            'Clear distribution of assets.',
+            'Minimizing potential family disputes.'
         ],
-      },
-      {
+    },
+    {
         icon: React.createElement(TrustIcon),
         title: 'Trust Creation',
         description: [
-          'Setting up living trusts and testamentary trusts.',
-          'Protecting assets for beneficiaries.',
-          'Professional management of your wealth.',
-          'Ensuring privacy and bypassing probate.',
+            'Setting up living trusts and testamentary trusts.',
+            'Protecting assets for beneficiaries.',
+            'Professional management of your wealth.',
+            'Ensuring privacy and bypassing probate.'
         ],
-      },
-    ],
-  },
-  process: {
-    title: 'Our Simple 4-Step Process',
-    steps: [
-      {
-        title: 'Initial Consultation',
-        content: 'We start with a free, no-obligation consultation to understand your needs, assets, and family situation.',
-        image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2832&auto=format&fit=crop',
-      },
-      {
-        title: 'Strategy & Planning',
-        content: 'Based on our discussion, we develop a tailored estate plan strategy that aligns with your specific goals.',
-        image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2670&auto=format&fit=crop',
-      },
-      {
-        title: 'Drafting & Review',
-        content: 'We draft all the necessary legal documents (Wills, Trusts, LPA) and review them with you to ensure every detail is perfect.',
-        image: 'https://i.imgur.com/usTuxWg.png',
-      },
-      {
-        title: 'Execution & Safekeeping',
-        content: 'We guide you through the official signing and witnessing process, and offer secure storage for your important documents.',
-        image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?q=80&w=2676&auto=format&fit=crop',
-      },
-    ],
-  },
-  testimonials: {
-    title: 'What Our Clients Say',
-    subtitle: 'Real stories from families we\'ve helped secure their future.',
-    items: [
-      {
+    },
+    {
+        icon: React.createElement(InsuranceIcon),
+        title: 'Life Insurance Review',
+        description: [
+            'Review existing policies to ensure adequate coverage.',
+            'Nomination and Insurance Trust setup.',
+            'Optimize policies for your family’s needs.',
+            'Align insurance with your overall estate plan.'
+        ],
+    }
+];
+
+const testimonialsEn: Testimonial[] = [
+    {
         id: 1,
-        initials: 'LT',
-        name: 'Lim T.',
-        role: 'Business Owner, Johor Bahru',
-        quote: 'The entire process was so much simpler than I imagined. They explained everything clearly and patiently. I feel a great sense of relief knowing my family is protected.',
+        initials: 'DL',
+        name: 'Daniel Lim',
+        role: 'Business Owner, Kuala Lumpur',
+        quote: "The team at EstateWealth MY made the complex process of setting up a trust for my family straightforward and stress-free. Their professionalism and attention to detail were exceptional. Highly recommended!",
         tags: [
-          { text: 'Will Writing', type: 'featured' },
-          { text: 'Professional', type: 'default' },
+            { text: 'Trust Creation', type: 'featured' },
+            { text: 'Business Succession', type: 'default' },
         ],
         stats: [
-          { icon: ClockIcon, text: '2 Weeks Process' },
-          { icon: ThumbsUpIcon, text: 'Highly Recommended' },
+            { icon: CalendarIcon, text: '3 Weeks' },
+            { icon: ClockIcon, text: '2 Meetings' },
         ],
         avatarGradient: 'linear-gradient(to top right, #34d399, #10b981)',
-      },
-      {
+    },
+    {
         id: 2,
         initials: 'RS',
-        name: 'R. Selvam',
-        role: 'Retired Teacher, Kuala Lumpur',
-        quote: 'I was worried about setting up a trust for my special needs child. Their expertise was invaluable. They created a plan that gives me complete peace of mind.',
+        name: 'Rina Sivam',
+        role: 'Doctor, Johor Bahru',
+        quote: "I had been putting off writing my will for years. EstateWealth MY provided clear, concise advice and handled everything efficiently. I now have peace of mind knowing my children's future is secure.",
         tags: [
-          { text: 'Trust Creation', type: 'featured' },
-          { text: 'Compassionate', type: 'default' },
+            { text: 'Will Writing', type: 'featured' },
         ],
         stats: [
-          { icon: ClockIcon, text: '4 Weeks Process' },
-          { icon: ThumbsUpIcon, text: 'Life Saver' },
+            { icon: CalendarIcon, text: '1 Week' },
+            { icon: ClockIcon, text: '1 Meeting' },
         ],
         avatarGradient: 'linear-gradient(to top right, #fb923c, #f97316)',
-      },
-      {
+    },
+    {
         id: 3,
-        initials: 'WC',
-        name: 'Wong C.',
-        role: 'Doctor, Penang',
-        quote: 'Very professional and efficient. They handled both my personal will and business succession planning flawlessly. I appreciate their attention to detail.',
+        initials: 'LW',
+        name: 'Lee Wei',
+        role: 'Retired Teacher, Penang',
+        quote: "Reviewing my life insurance policies was something I knew was important. The consultant was patient and explained all the technical aspects in a way I could easily understand. Thank you for the excellent service.",
         tags: [
-          { text: 'Business Succession', type: 'featured' },
-          { text: 'Efficient', type: 'default' },
+            { text: 'Insurance Review', type: 'featured' },
         ],
         stats: [
-          { icon: ClockIcon, text: '3 Weeks Process' },
-          { icon: ThumbsUpIcon, text: 'Exceptional Service' },
+            { icon: CalendarIcon, text: '10 Days' },
+            { icon: ClockIcon, text: '1 Meeting' },
         ],
         avatarGradient: 'linear-gradient(to top right, #60a5fa, #3b82f6)',
-      },
-    ],
-  },
-  faq: {
-    title: 'Frequently Asked Questions',
-    subtitle: 'Answering your common questions about estate planning.',
-    items: [
-      {
+    },
+];
+
+const processStepsEn: ProcessStep[] = [
+    {
+        title: 'Discovery & Consultation',
+        content: 'We begin with a personal consultation to understand your unique family situation, financial goals, and legacy wishes.',
+        image: 'https://i.imgur.com/tJAUi6F.png',
+    },
+    {
+        title: 'Tailored Strategy Design',
+        content: 'We craft a bespoke estate plan, presenting you with clear, strategic options for wills, trusts, and insurance to best protect your assets.',
+        image: 'https://i.imgur.com/zgarMRK.png',
+    },
+    {
+        title: 'Drafting & Review',
+        content: 'We handle the drafting of all legal documents and guide you through the finalization process, ensuring your legacy is secured with precision and care.',
+        image: 'https://i.imgur.com/usTuxWg.png',
+    },
+    {
+        title: 'Execution & Safekeeping',
+        content: 'We guide you through the official signing and witnessing process, and offer secure storage for your important documents.',
+        image: 'https://i.imgur.com/dJZyl9v.png',
+    },
+];
+
+const faqItemsEn: FAQItem[] = [
+    {
         question: 'Why do I need a will?',
-        answer: 'A will is a legal document that specifies how you want your assets to be distributed after your death. Without a will, your assets will be distributed according to Malaysia\'s Distribution Act 1958, which may not align with your wishes and can lead to family disputes and delays.',
-      },
-      {
+        answer: "A will is a legal document that outlines your wishes regarding the distribution of your assets, the care of any minor children, and the appointment of an executor to manage your estate after your death. Without a will, your assets will be distributed according to Malaysia's Distribution Act 1958, which may not align with your wishes."
+    },
+    {
         question: 'What is the difference between a will and a trust?',
-        answer: 'A will only takes effect after you pass away. A trust can be effective during your lifetime (a living trust) or after death (a testamentary trust). Trusts offer more control over how and when your assets are distributed to beneficiaries and can help avoid the probate process.',
-      },
-      {
-        question: 'How much does it cost?',
-        answer: 'The cost varies depending on the complexity of your estate and the services required. We offer transparent pricing and will provide a detailed quote after our initial free consultation. Our goal is to provide affordable and accessible services.',
-      },
-      {
-        question: 'How often should I review my will?',
-        answer: 'It\'s a good practice to review your will every 3-5 years, or after any major life event such as marriage, divorce, the birth of a child, or a significant change in your financial situation. This ensures your will remains up-to-date with your current wishes.',
-      },
-    ],
-  },
-  contact: {
-    title: 'Get In Touch',
-    subtitle: 'Ready to plan for your future? Contact us today for a free, confidential consultation.',
-    form: {
-      name: 'Full Name',
-      email: 'Email Address',
-      phone: 'Phone Number (Optional)',
-      message: 'Your Message',
-      submit: 'Send Message',
+        answer: 'A will only takes effect after you pass away. A trust can be effective during your lifetime (a living trust) or upon your death. Trusts offer more control over how and when your assets are distributed to your beneficiaries and can help avoid the probate process, offering more privacy.'
     },
-    status: {
-      loading: 'Sending...',
-      success: 'Thank you! Your message has been sent. We will get back to you shortly.',
-      error: 'Oops! Something went wrong. Please try again.',
+    {
+        question: 'Who should I appoint as my executor or trustee?',
+        answer: "You should choose someone you trust implicitly to act in your best interests and the interests of your beneficiaries. This can be a family member, a friend, or a professional trustee company. It's important to select someone who is responsible, organized, and willing to take on the role."
     },
-  },
-  footer: {
-    tagline: 'Securing legacies and providing peace of mind for families across Malaysia.',
-    navigation: 'Navigation',
-    contact: 'Contact Info',
-    disclaimer: {
-      title: 'Disclaimer',
-      text: 'The information provided on this website is for general informational purposes only and does not constitute legal advice. Please consult with a qualified professional for advice tailored to your specific situation.',
+    {
+        question: 'How often should I review my estate plan?',
+        answer: "It's a good practice to review your estate plan every 3-5 years, or whenever you experience a major life event such as marriage, divorce, the birth of a child, or a significant change in your financial situation. This ensures your plan remains current and reflects your wishes."
+    }
+];
+
+const contentEn = {
+    navLinks: navLinksEn,
+    hero: {
+        preTitle: 'Your Legacy, Secured',
+        subtitle: {
+            regular: 'Comprehensive Estate Planning in ',
+            gradient: 'Malaysia'
+        },
+        description: 'Navigate the complexities of wills, trusts, and succession planning with our expert guidance. Secure your family\'s future and ensure your assets are protected for generations to come.',
+        ctaButton: 'Get a Free Consultation',
     },
-    copyright: 'All Rights Reserved.',
-  },
+    about: {
+        title: 'Your Trusted Partner in Legacy Planning',
+        p1: "With years of experience in financial and estate planning in Malaysia, I am dedicated to helping individuals and families secure their financial future. My passion lies in crafting personalized strategies that protect your hard-earned assets and ensure your legacy is preserved according to your wishes.",
+        p2: "I believe that proper estate planning is one of the greatest gifts you can give to your loved ones, providing them with clarity and security during difficult times. My approach is built on trust, integrity, and a deep understanding of the local legal landscape.",
+        quote: "Planning is bringing the future into the present so that you can do something about it now."
+    },
+    services: {
+        title: 'Our Core Services',
+        subtitle: 'Comprehensive solutions to secure your assets and legacy.',
+        items: servicesEn,
+    },
+    process: {
+        title: 'Our Simple 4-Step Process',
+        steps: processStepsEn,
+    },
+    testimonials: {
+        title: 'What Our Clients Say',
+        subtitle: "We are proud to have helped numerous families in Malaysia secure their legacies. Here's what some of them have to say.",
+        items: testimonialsEn,
+    },
+    faq: {
+        title: 'Frequently Asked Questions',
+        subtitle: "Have questions? We have answers. Here are some of the most common questions we receive.",
+        items: faqItemsEn,
+    },
+    contact: {
+        title: 'Get In Touch',
+        subtitle: "Ready to plan for your future? Contact us today for a free, confidential consultation.",
+        form: {
+            name: 'Full Name',
+            email: 'Email Address',
+            phone: 'Phone Number (Optional)',
+            message: 'Your Message',
+            submit: 'Send Message'
+        },
+        status: {
+            loading: 'Sending...',
+            success: 'Thank you for your message! We will get back to you shortly.',
+            error: 'An error occurred. Please fill in all required fields and try again.'
+        }
+    },
+    footer: {
+        tagline: 'Securing your legacy, one family at a time.',
+        navigation: 'Navigation',
+        contact: 'Contact Info',
+        disclaimer: {
+            title: 'Disclaimer',
+            text: 'The information provided on this website is for general informational purposes only and does not constitute legal or financial advice.'
+        },
+        copyright: 'All Rights Reserved.'
+    }
 };
 
-const cnContent: Content = {
-  navLinks: [
+// Chinese Version
+const navLinksCn: NavLink[] = [
     { href: '#about', label: '关于我们' },
-    { href: '#services', label: '服务项目' },
+    { href: '#services', label: '我们的服务' },
     { href: '#process', label: '我们的流程' },
     { href: '#testimonials', label: '客户评价' },
-    { href: '#faq', label: '常见问题' },
+    { href: '#faq',label: '常见问题' },
     { href: '#contact', label: '联系我们' },
-  ],
-  hero: {
-    preTitle: '您的传承，得到保障。',
-    subtitle: {
-      regular: '专业遗产规划与',
-      gradient: '遗嘱撰写服务',
-    },
-    description: '我们帮助您保护您的资产，并确保您所爱的人根据您的意愿得到照顾。满怀信心地规划未来。',
-    ctaButton: '获取免费咨询',
-  },
-  about: {
-    title: '您值得信赖的遗产规划伙伴',
-    p1: '凭借多年在马来西亚遗产法领域的专注经验，我提供个性化和全面的遗产规划服务。我的使命是揭开这个过程的神秘面纱，让每个人都能轻松、直接地进行规划。',
-    p2: '从起草具有法律效力的遗嘱到建立稳健的信托，我致力于守护您的遗产，为您和您的家人带来安心。',
-    quote: '“种一棵树最好的时间是20年前，其次是现在。” 规划您的遗产就是规划您家庭的未来。',
-  },
-  services: {
-    title: '我们的核心服务',
-    subtitle: '保障您资产和遗产的全面解决方案。',
-    items: [
-      {
+];
+
+const servicesCn: Service[] = [
+    {
         icon: React.createElement(WillIcon),
         title: '遗嘱撰写',
         description: [
-          '起草具有法律效力的遗嘱。',
-          '指定遗嘱执行人和监护人。',
-          '清晰的资产分配。',
-          '最大限度地减少潜在的家庭纠纷。',
+            '撰写具有法律效力的遗嘱。',
+            '指定执行人和监护人。',
+            '清晰的资产分配。',
+            '最大限度地减少潜在的家庭纠纷。'
         ],
-      },
-      {
+    },
+    {
         icon: React.createElement(TrustIcon),
         title: '信托设立',
         description: [
-          '设立生前信托和遗嘱信托。',
-          '为受益人保护资产。',
-          '专业管理您的财富。',
-          '确保隐私并绕过遗嘱认证程序。',
+            '设立生前信托和遗嘱信托。',
+            '为受益人保护资产。',
+            '专业管理您的财富。',
+            '确保隐私并绕过遗嘱认证。'
         ],
-      },
-    ],
-  },
-  process: {
-    title: '我们简单的四步流程',
-    steps: [
-      {
-        title: '初步咨询',
-        content: '我们从免费、无义务的咨询开始，了解您的需求、资产和家庭状况。',
-        image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2832&auto=format&fit=crop',
-      },
-      {
-        title: '策略与规划',
-        content: '根据我们的讨论，我们制定一个符合您特定目标的量身定制的遗产规划策略。',
-        image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2670&auto=format&fit=crop',
-      },
-      {
-        title: '起草与审查',
-        content: '我们起草所有必要的法律文件（遗嘱、信托、LPA），并与您一起审查，确保每个细节都完美无缺。',
-        image: 'https://i.imgur.com/usTuxWg.png',
-      },
-      {
-        title: '执行与保管',
-        content: '我们指导您完成正式的签署和见证过程，并为您的重要文件提供安全的保管服务。',
-        image: 'https://images.unsplash.com/photo-1589998059171-988d887df646?q=80&w=2676&auto=format&fit=crop',
-      },
-    ],
-  },
-  testimonials: {
-    title: '客户怎么说',
-    subtitle: '我们帮助过的家庭保障他们未来的真实故事。',
-    items: [
-      {
+    },
+    {
+        icon: React.createElement(InsuranceIcon),
+        title: '人寿保险审查',
+        description: [
+            '审查现有保单以确保足够的保障。',
+            '提名和保险信托设立。',
+            '为您家庭的需求优化保单。',
+            '将保险与您的整体遗产规划相结合。'
+        ],
+    }
+];
+
+const testimonialsCn: Testimonial[] = [
+    {
         id: 1,
         initials: '林',
-        name: '林先生',
-        role: '企业主，新山',
-        quote: '整个过程比我想象的要简单得多。他们清晰耐心地解释了一切。知道我的家人得到了保障，我感到非常安心。',
+        name: 'Daniel Lim',
+        role: '企业主，吉隆坡',
+        quote: "EstateWealth MY 的团队让我为家人设立信托的复杂过程变得简单无忧。他们的专业精神和对细节的关注非常出色。强烈推荐！",
         tags: [
-          { text: '遗嘱撰写', type: 'featured' },
-          { text: '专业', type: 'default' },
+            { text: '信托设立', type: 'featured' },
+            { text: '商业继承', type: 'default' },
         ],
         stats: [
-          { icon: ClockIcon, text: '2周完成' },
-          { icon: ThumbsUpIcon, text: '强烈推荐' },
+            { icon: CalendarIcon, text: '3 周' },
+            { icon: ClockIcon, text: '2 次会议' },
         ],
         avatarGradient: 'linear-gradient(to top right, #34d399, #10b981)',
-      },
-      {
+    },
+    {
         id: 2,
-        initials: 'RS',
-        name: 'R. Selvam 先生',
-        role: '退休教师，吉隆坡',
-        quote: '我曾为我的特殊需求孩子设立信托而担忧。他们的专业知识非常宝贵。他们制定的计划让我完全安心。',
+        initials: '莉',
+        name: 'Rina Sivam',
+        role: '医生，新山',
+        quote: "多年来我一直推迟写遗嘱。EstateWealth MY 提供了清晰、简洁的建议，并高效地处理了一切。我现在很安心，因为我知道我孩子的未来是有保障的。",
         tags: [
-          { text: '信托设立', type: 'featured' },
-          { text: '富同情心', type: 'default' },
+            { text: '遗嘱撰写', type: 'featured' },
         ],
         stats: [
-          { icon: ClockIcon, text: '4周完成' },
-          { icon: ThumbsUpIcon, text: '人生救星' },
+            { icon: CalendarIcon, text: '1 周' },
+            { icon: ClockIcon, text: '1 次会议' },
         ],
         avatarGradient: 'linear-gradient(to top right, #fb923c, #f97316)',
-      },
-      {
+    },
+    {
         id: 3,
-        initials: '黄',
-        name: '黄女士',
-        role: '医生，槟城',
-        quote: '非常专业和高效。他们完美地处理了我的个人遗嘱和企业继承规划。我非常欣赏他们对细节的关注。',
+        initials: '李',
+        name: 'Lee Wei',
+        role: '退休教师，槟城',
+        quote: "审查我的人寿保险保单是我知道很重要的一件事。顾问很有耐心，用我能轻易理解的方式解释了所有的技术问题。感谢你们的优质服务。",
         tags: [
-          { text: '企业继承', type: 'featured' },
-          { text: '高效', type: 'default' },
+            { text: '保险审查', type: 'featured' },
         ],
         stats: [
-          { icon: ClockIcon, text: '3周完成' },
-          { icon: ThumbsUpIcon, text: '卓越服务' },
+            { icon: CalendarIcon, text: '10 天' },
+            { icon: ClockIcon, text: '1 次会议' },
         ],
         avatarGradient: 'linear-gradient(to top right, #60a5fa, #3b82f6)',
-      },
-    ],
-  },
-  faq: {
-    title: '常见问题',
-    subtitle: '解答您关于遗产规划的常见问题。',
-    items: [
-      {
+    },
+];
+
+const processStepsCn: ProcessStep[] = [
+    {
+        title: '探索与咨询',
+        content: '我们通过个人咨询开始，了解您独特的家庭状况、财务目标和遗产愿望。',
+        image: 'https://i.imgur.com/tJAUi6F.png',
+    },
+    {
+        title: '量身定制策略设计',
+        content: '我们制定一份定制的遗产计划，为您提供清晰的遗嘱、信托和保险战略选择，以最好地保护您的资产。',
+        image: 'https://i.imgur.com/zgarMRK.png',
+    },
+    {
+        title: '起草与审查',
+        content: '我们处理所有法律文件的起草工作，并指导您完成最终确定过程，确保您的遗产得到精确和谨慎的保障。',
+        image: 'https://i.imgur.com/usTuxWg.png',
+    },
+    {
+        title: '执行与保管',
+        content: '我们指导您完成正式的签署和见证过程，并为您的重要文件提供安全的存储。',
+        image: 'https://i.imgur.com/dJZyl9v.png',
+    },
+];
+
+const faqItemsCn: FAQItem[] = [
+    {
         question: '为什么我需要遗嘱？',
-        answer: '遗嘱是一份法律文件，规定了您去世后希望如何分配您的资产。没有遗嘱，您的资产将根据马来西亚的1958年分配法令进行分配，这可能不符合您的意愿，并可能导致家庭纠纷和延误。',
-      },
-      {
+        answer: "遗嘱是一份法律文件，概述了您关于资产分配、任何未成年子女的照顾以及指定执行人来管理您去世后遗产的愿望。没有遗嘱，您的资产将根据马来西亚的 1958 年分配法进行分配，这可能与您的意愿不符。"
+    },
+    {
         question: '遗嘱和信托有什么区别？',
-        answer: '遗嘱只在您去世后生效。信托可以在您在世时生效（生前信托），也可以在去世后生效（遗嘱信托）。信托在如何以及何时向受益人分配资产方面提供更多控制权，并可以帮助避免遗嘱认证过程。',
-      },
-      {
-        question: '费用是多少？',
-        answer: '费用根据您遗产的复杂性和所需服务而有所不同。我们提供透明的定价，并在我们初步免费咨询后提供详细报价。我们的目标是提供价格合理且易于获得的服务。',
-      },
-      {
-        question: '我应该多久审查一次我的遗嘱？',
-        answer: '每3-5年审查一次您的遗嘱是一个好习惯，或者在任何重大生活事件之后，如结婚、离婚、生子或财务状况发生重大变化后。这能确保您的遗嘱与您当前的意愿保持一致。',
-      },
-    ],
-  },
-  contact: {
-    title: '联系我们',
-    subtitle: '准备好为您的未来规划了吗？立即联系我们进行免费、保密的咨询。',
-    form: {
-      name: '全名',
-      email: '电子邮件地址',
-      phone: '电话号码（可选）',
-      message: '您的留言',
-      submit: '发送留言',
+        answer: '遗嘱仅在您去世后生效。信托可以在您在世时生效（生前信托），也可以在您去世时生效。信托为您如何以及何时将资产分配给受益人提供了更多的控制权，并可以帮助避免遗嘱认证过程，提供更多的隐私。'
     },
-    status: {
-      loading: '发送中...',
-      success: '谢谢！您的留言已发送。我们会尽快回复您。',
-      error: '哎呀！出错了。请再试一次。',
+    {
+        question: '我应该任命谁为我的执行人或受托人？',
+        answer: "您应该选择一个您完全信任的人，以您的最佳利益和受益人的利益行事。这可以是家人、朋友或专业的受托公司。选择一个负责任、有条理并愿意承担这个角色的人很重要。"
     },
-  },
-  footer: {
-    tagline: '为马来西亚各地的家庭保障传承，带来安心。',
-    navigation: '网站导航',
-    contact: '联系信息',
-    disclaimer: {
-      title: '免责声明',
-      text: '本网站提供的信息仅供一般参考，不构成法律建议。请咨询合格的专业人士，以获得针对您具体情况的建议。',
+    {
+        question: '我应该多久审查一次我的遗产计划？',
+        answer: "每 3-5 年审查一次您的遗产计划是一个好习惯，或者在您经历重大生活事件时，例如结婚、离婚、生子或财务状况发生重大变化时。这可以确保您的计划保持最新并反映您的愿望。"
+    }
+];
+
+const contentCn = {
+    navLinks: navLinksCn,
+    hero: {
+        preTitle: '您的传承，得到保障',
+        subtitle: {
+            regular: '马来西亚全面的遗产规划',
+            gradient: ''
+        },
+        description: '在我们的专家指导下，应对遗嘱、信托和继承规划的复杂性。保障您家人的未来，并确保您的资产为子孙后代得到保护。',
+        ctaButton: '获取免费咨询',
     },
-    copyright: '版权所有。',
-  },
+    about: {
+        title: '您值得信赖的传承规划伙伴',
+        p1: "凭借在马来西亚金融和遗产规划领域多年的经验，我致力于帮助个人和家庭保障他们的财务未来。我的热情在于制定个性化策略，保护您辛苦赚来的资产，并确保您的遗产按照您的意愿得以保留。",
+        p2: "我相信，适当的遗产规划是您可以给您所爱的人最好的礼物之一，在困难时期为他们提供清晰和安全感。我的方法建立在信任、诚信和对当地法律环境的深刻理解之上。",
+        quote: "规划就是将未来带到现在，这样你现在就可以对此做些什么。"
+    },
+    services: {
+        title: '我们的核心服务',
+        subtitle: '全面的解决方案，以保障您的资产和传承。',
+        items: servicesCn,
+    },
+    process: {
+        title: '我们简单的四步流程',
+        steps: processStepsCn,
+    },
+    testimonials: {
+        title: '我们的客户怎么说',
+        subtitle: "我们很自豪能够帮助马来西亚的众多家庭保障他们的传承。以下是其中一些人的评价。",
+        items: testimonialsCn,
+    },
+    faq: {
+        title: '常见问题',
+        subtitle: "有疑问吗？我们有答案。以下是我们收到的一些最常见的问题。",
+        items: faqItemsCn,
+    },
+    contact: {
+        title: '联系我们',
+        subtitle: "准备好规划您的未来了吗？立即联系我们进行免费、保密的咨询。",
+        form: {
+            name: '全名',
+            email: '电子邮件地址',
+            phone: '电话号码（可选）',
+            message: '您的信息',
+            submit: '发送信息'
+        },
+        status: {
+            loading: '发送中...',
+            success: '感谢您的留言！我们会尽快回复您。',
+            error: '发生错误。请填写所有必填字段，然后重试。'
+        }
+    },
+    footer: {
+        tagline: '一次为一个家庭，保障您的传承。',
+        navigation: '导航',
+        contact: '联系信息',
+        disclaimer: {
+            title: '免责声明',
+            text: '本网站上提供的信息仅供一般参考之用，不构成法律或财务建议。'
+        },
+        copyright: '版权所有。'
+    }
 };
 
-
 export const content = {
-    en: enContent,
-    cn: cnContent
+    en: contentEn,
+    cn: contentCn,
 };
