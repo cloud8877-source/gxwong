@@ -2,6 +2,26 @@ import React, { useState, useEffect, useCallback, useRef, CSSProperties } from '
 import { useLanguage } from '../contexts/LanguageContext';
 import type { Testimonial as TestimonialType } from '../types';
 
+// --- Local Icon Definitions for Robustness ---
+const BuildingOffice2Icon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636l1.5.545m-2.09-2.09l1.5.545M18.75 10.75h-4.5v-4.5h4.5v4.5z" />
+    </svg>
+);
+
+const UserGroupIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.14-4.08a3 3 0 00-4.682-2.72-3 3 0 00-4.682 2.72m6.11-3.04a2.25 2.25 0 103.75 0 2.25 2.25 0 00-3.75 0zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+);
+
+// --- Icon Mapper ---
+const statIconMap: { [key: string]: React.ComponentType<React.SVGProps<SVGSVGElement>> } = {
+    building: BuildingOffice2Icon,
+    group: UserGroupIcon,
+};
+
+
 // --- TestimonialStack Component ---
 const TestimonialStack = ({ testimonials }: { testimonials: TestimonialType[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -139,7 +159,8 @@ const TestimonialStack = ({ testimonials }: { testimonials: TestimonialType[] })
                 </div>
                 <div className="flex items-center gap-4 text-xs text-stone-500">
                   {testimonial.stats.map((stat, i) => {
-                    const IconComponent = stat.icon;
+                    const IconComponent = statIconMap[stat.icon];
+                    if (!IconComponent) return null;
                     return (
                       <span key={i} className="flex items-center">
                         <IconComponent className="mr-1.5 h-4 w-4 text-amber-600" />

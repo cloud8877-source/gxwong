@@ -1,7 +1,7 @@
 import React from 'react';
 
 export interface Service {
-  icon: React.ReactNode;
+  icon: string; // Changed from React.ReactNode
   title: string;
   description: string[];
 }
@@ -13,7 +13,7 @@ export interface Testimonial {
   role: string;
   quote: string;
   tags: { text: string; type: 'featured' | 'default' }[];
-  stats: { icon: React.ComponentType<React.SVGProps<SVGSVGElement>>; text: string; }[];
+  stats: { icon: string; text: string; }[]; // Changed from ComponentType
   avatarGradient: string;
 }
 

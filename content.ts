@@ -1,38 +1,6 @@
 import React from 'react';
 import type { Service, Testimonial, NavLink, ProcessStep, FAQItem, AboutContent } from './types';
 
-// --- SVG Icon Components ---
-const DocumentTextIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", ...props},
-        React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" })
-    )
-);
-
-const ShieldCheckIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", ...props },
-        React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.6-3.75M9 12l2.25 2.25L15 9" })
-    )
-);
-
-const HeartIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", ...props },
-        React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" })
-    )
-);
-
-const BuildingOffice2Icon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", ...props },
-        React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205l3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636l1.5.545m-2.09-2.09l1.5.545M18.75 10.75h-4.5v-4.5h4.5v4.5z" })
-    )
-);
-
-const UserGroupIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", ...props },
-        React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m-7.14-4.08a3 3 0 00-4.682-2.72-3 3 0 00-4.682 2.72m6.11-3.04a2.25 2.25 0 103.75 0 2.25 2.25 0 00-3.75 0zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" })
-    )
-);
-
-
 const enContent = {
     navLinks: [
         { href: '#about', label: 'About' },
@@ -58,14 +26,14 @@ const enContent = {
             "I believe that proper estate planning is one of the greatest gifts you can give to your loved ones, providing them with clarity and security during difficult times. My approach is built on trust, integrity, and a deep understanding of the local legal landscape."
         ],
         quote: "Planning is bringing the future into the present so that you can do something about it now.",
-        image: 'https://i.imgur.com/5y0vnNL.jpeg',
+        image: 'https://i.ibb.co/s9KVGHsZ/Generated-Image-October-21-2025-3-52-PM.webp',
     } as AboutContent,
     services: {
         title: 'Our Core Services',
         subtitle: 'Comprehensive solutions to secure your assets and legacy.',
         items: [
             {
-                icon: React.createElement(DocumentTextIcon, { className: "w-10 h-10" }),
+                icon: 'document',
                 title: 'Will Writing',
                 description: [
                     'Drafting of legally valid wills.',
@@ -75,7 +43,7 @@ const enContent = {
                 ],
             },
             {
-                icon: React.createElement(ShieldCheckIcon, { className: "w-10 h-10" }),
+                icon: 'shield',
                 title: 'Trust Creation',
                 description: [
                     'Setting up living trusts and testamentary trusts.',
@@ -85,7 +53,7 @@ const enContent = {
                 ],
             },
             {
-                icon: React.createElement(HeartIcon, { className: "w-10 h-10" }),
+                icon: 'heart',
                 title: 'Life Insurance Review',
                 description: [
                     'Reviewing existing policies for adequacy.',
@@ -102,22 +70,22 @@ const enContent = {
             {
                 title: 'Initial Consultation',
                 content: 'We start with a free, no-obligation consultation to understand your needs, assets, and family situation.',
-                image: 'https://i.imgur.com/tJAUi6F.png',
+                image: 'https://i.ibb.co/B5yQNYV0/Gemini-Generated-Image-j0qvttj0qvttj0qv.webp',
             },
             {
                 title: 'Strategy & Planning',
                 content: 'Based on our discussion, we develop a tailored estate plan strategy that aligns with your specific goals.',
-                image: 'https://i.imgur.com/zgarMRK.png',
+                image: 'https://i.ibb.co/gZ9VJ90W/Gemini-Generated-Image-ma0bzzma0bzzma0b-1.webp',
             },
             {
                 title: 'Drafting & Review',
                 content: 'We draft all the necessary legal documents (Wills, Trusts, LPA) and review them with you to ensure every detail is perfect.',
-                image: 'https://i.imgur.com/usTuxWg.png',
+                image: 'https://i.ibb.co/3mtRgJ1T/Gemini-Generated-Image-tlpt48tlpt48tlpt.webp',
             },
             {
                 title: 'Execution & Safekeeping',
                 content: 'We guide you through the official signing and witnessing process, and offer secure storage for your important documents.',
-                image: 'https://i.imgur.com/dJZyl9v.png',
+                image: 'https://i.ibb.co/svmxgK5R/Gemini-Generated-Image-2kk4jg2kk4jg2kk4.webp',
             },
         ] as ProcessStep[],
     },
@@ -136,8 +104,8 @@ const enContent = {
                     { text: 'Trust Setup', type: 'default' },
                 ],
                 stats: [
-                    { icon: BuildingOffice2Icon, text: 'SME Founder' },
-                    { icon: UserGroupIcon, text: 'Family of 5' },
+                    { icon: 'building', text: 'SME Founder' },
+                    { icon: 'group', text: 'Family of 5' },
                 ],
                 avatarGradient: 'linear-gradient(to top right, #a7f3d0, #14532d)',
             },
@@ -152,7 +120,7 @@ const enContent = {
                     { text: 'Guardian Appointment', type: 'default' },
                 ],
                 stats: [
-                    { icon: UserGroupIcon, text: '2 Children' },
+                    { icon: 'group', text: '2 Children' },
                 ],
                 avatarGradient: 'linear-gradient(to top right, #fcd34d, #b45309)',
             },
@@ -167,7 +135,7 @@ const enContent = {
                     { text: 'Charitable Trust', type: 'featured' },
                 ],
                 stats: [
-                    { icon: UserGroupIcon, text: '3 Beneficiaries' },
+                    { icon: 'group', text: '3 Beneficiaries' },
                 ],
                 avatarGradient: 'linear-gradient(to top right, #fde68a, #78350f)',
             },
@@ -252,14 +220,14 @@ const cnContent = {
             "我相信，妥善的遗产规划是您可以给予亲人最伟大的礼物之一，在困难时期为他们提供清晰和保障。我的方法建立在信任、诚信和对当地法律环境的深刻理解之上。"
         ],
         quote: "规划就是将未来带到现在，这样你就可以立即采取行动。",
-        image: 'https://i.imgur.com/5y0vnNL.jpeg',
+        image: 'https://i.ibb.co/s9KVGHsZ/Generated-Image-October-21-2025-3-52-PM.webp',
     } as AboutContent,
     services: {
         title: '我们的核心服务',
         subtitle: '保障您资产与传承的全面解决方案。',
         items: [
             {
-                icon: React.createElement(DocumentTextIcon, { className: "w-10 h-10" }),
+                icon: 'document',
                 title: '遗嘱撰写',
                 description: [
                     '起草具有法律效力的遗嘱。',
@@ -269,7 +237,7 @@ const cnContent = {
                 ],
             },
             {
-                icon: React.createElement(ShieldCheckIcon, { className: "w-10 h-10" }),
+                icon: 'shield',
                 title: '信托设立',
                 description: [
                     '设立生前信托和遗嘱信托。',
@@ -279,7 +247,7 @@ const cnContent = {
                 ],
             },
             {
-                icon: React.createElement(HeartIcon, { className: "w-10 h-10" }),
+                icon: 'heart',
                 title: '人寿保险审查',
                 description: [
                     '审查现有保单是否足够。',
@@ -296,22 +264,22 @@ const cnContent = {
             {
                 title: '初步咨询',
                 content: '我们从免费、无义务的咨询开始，了解您的需求、资产和家庭状况。',
-                image: 'https://i.imgur.com/tJAUi6F.png',
+                image: 'https://i.ibb.co/B5yQNYV0/Gemini-Generated-Image-j0qvttj0qvttj0qv.webp',
             },
             {
                 title: '策略与规划',
                 content: '根据我们的讨论，我们制定符合您特定目标的量身定制的遗产规划策略。',
-                image: 'https://i.imgur.com/zgarMRK.png',
+                image: 'https://i.ibb.co/gZ9VJ90W/Gemini-Generated-Image-ma0bzzma0bzzma0b-1.webp',
             },
             {
                 title: '起草与审核',
                 content: '我们起草所有必要的法律文件（遗嘱、信托、LPA），并与您一同审核，确保每个细节都完美无缺。',
-                image: 'https://i.imgur.com/usTuxWg.png',
+                image: 'https://i.ibb.co/3mtRgJ1T/Gemini-Generated-Image-tlpt48tlpt48tlpt.webp',
             },
             {
                 title: '执行与保管',
                 content: '我们指导您完成正式的签署和见证过程，并为您的重要文件提供安全存储。',
-                image: 'https://i.imgur.com/dJZyl9v.png',
+                image: 'https://i.ibb.co/svmxgK5R/Gemini-Generated-Image-2kk4jg2kk4jg2kk4.webp',
             },
         ] as ProcessStep[],
     },
@@ -330,8 +298,8 @@ const cnContent = {
                     { text: '信托设立', type: 'default' },
                 ],
                 stats: [
-                    { icon: BuildingOffice2Icon, text: '中小企业创始人' },
-                    { icon: UserGroupIcon, text: '五口之家' },
+                    { icon: 'building', text: '中小企业创始人' },
+                    { icon: 'group', text: '五口之家' },
                 ],
                 avatarGradient: 'linear-gradient(to top right, #a7f3d0, #14532d)',
             },
@@ -346,7 +314,7 @@ const cnContent = {
                     { text: '监护人指定', type: 'default' },
                 ],
                 stats: [
-                    { icon: UserGroupIcon, text: '2个孩子' },
+                    { icon: 'group', text: '2个孩子' },
                 ],
                 avatarGradient: 'linear-gradient(to top right, #fcd34d, #b45309)',
             },
@@ -361,7 +329,7 @@ const cnContent = {
                     { text: '慈善信托', type: 'featured' },
                 ],
                 stats: [
-                    { icon: UserGroupIcon, text: '3位受益人' },
+                    { icon: 'group', text: '3位受益人' },
                 ],
                 avatarGradient: 'linear-gradient(to top right, #fde68a, #78350f)',
             },
