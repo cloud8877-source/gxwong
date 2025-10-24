@@ -3,7 +3,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 const About: React.FC = () => {
   const { t } = useLanguage();
-  const imageUrl = "https://scontent.fkul3-5.fna.fbcdn.net/v/t39.30808-6/538799227_1183663956902286_1566685595467441692_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=DzaNeTRSnj0Q7kNvwHo8Rq3&_nc_oc=AdlkeHCIKX6OrtgqmkUG0GtTEYsq0ezw8jq-SAdmS5CcLAfndpNSXS-YhbAtdVPAaAQkU2R4S09syWOl1qRGc8bo&_nc_zt=23&_nc_ht=scontent.fkul3-5.fna&_nc_gid=U_tOFjcI-tK10EqOwDhM-g&oh=00_Afd597igRxiUVR1ngGAKMwr2i5x6VRBpdVRNAeuATm2kJw&oe=68FED52C";
+  const imageUrl = "https://i.imgur.com/5y0vnNL.jpeg";
 
   return (
     <section id="about" className="py-20 md:py-28 bg-white">

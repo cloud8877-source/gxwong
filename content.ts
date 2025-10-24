@@ -14,13 +14,6 @@ const TrustIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     )
 );
 
-const PowerIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", className: "h-10 w-10", fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", strokeWidth: 1.5, ...props },
-        React.createElement('path', { strokeLinecap: "round", strokeLinejoin: "round", d: "M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" }),
-        React.createElement('path', { d: "M12 15a3 3 0 100-6 3 3 0 000 6z" })
-    )
-);
-
 // Icons for Testimonials
 const ClockIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
     React.createElement('svg', { xmlns: "http://www.w3.org/2000/svg", fill: "none", viewBox: "0 0 24 24", strokeWidth: 1.5, stroke: "currentColor", ...props},
@@ -146,16 +139,6 @@ const enContent: Content = {
           'Ensuring privacy and bypassing probate.',
         ],
       },
-      {
-        icon: React.createElement(PowerIcon),
-        title: 'Lasting Power of Attorney (LPA)',
-        description: [
-          'Appointing someone to make decisions on your behalf.',
-          'Covering financial and personal welfare matters.',
-          'Crucial for managing affairs if you become incapacitated.',
-          'Ensures your wishes are respected.',
-        ],
-      },
     ],
   },
   process: {
@@ -174,7 +157,7 @@ const enContent: Content = {
       {
         title: 'Drafting & Review',
         content: 'We draft all the necessary legal documents (Wills, Trusts, LPA) and review them with you to ensure every detail is perfect.',
-        image: 'https://images.unsplash.com/photo-1554224155-8d04421cd6e2?q=80&w=2672&auto=format&fit=crop',
+        image: 'https://i.imgur.com/usTuxWg.png',
       },
       {
         title: 'Execution & Safekeeping',
@@ -335,16 +318,6 @@ const cnContent: Content = {
           '确保隐私并绕过遗嘱认证程序。',
         ],
       },
-      {
-        icon: React.createElement(PowerIcon),
-        title: '持久授权书 (LPA)',
-        description: [
-          '指定某人代表您做决定。',
-          '涵盖财务和个人福利事宜。',
-          '在您丧失行为能力时管理事务至关重要。',
-          '确保您的意愿得到尊重。',
-        ],
-      },
     ],
   },
   process: {
@@ -363,7 +336,7 @@ const cnContent: Content = {
       {
         title: '起草与审查',
         content: '我们起草所有必要的法律文件（遗嘱、信托、LPA），并与您一起审查，确保每个细节都完美无缺。',
-        image: 'https://images.unsplash.com/photo-1554224155-8d04421cd6e2?q=80&w=2672&auto=format&fit=crop',
+        image: 'https://i.imgur.com/usTuxWg.png',
       },
       {
         title: '执行与保管',
