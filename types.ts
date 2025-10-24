@@ -32,3 +32,10 @@ export interface FAQItem {
   question: string;
   answer: string;
 }
+
+export interface AboutContent {
+    title: string;
+    paragraphs: string[];
+    quote: string;
+    image: string;
+}

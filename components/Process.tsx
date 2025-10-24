@@ -1,91 +1,85 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
-// Simple cn utility to combine class names
 const cn = (...classes: (string | boolean | undefined)[]) => classes.filter(Boolean).join(' ');
 
-const Process: React.FC = () => {
-    const { t } = useLanguage();
-    const features = t.process.steps;
-    const autoPlayInterval = 5000; // 5 seconds
+export const Process: React.FC = () => {
+  const { t } = useLanguage();
+  const features = t.process.steps;
+  const autoPlayInterval = 5000;
 
-    const [currentFeature, setCurrentFeature] = useState(0);
+  const [currentFeature, setCurrentFeature] = useState(0);
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setCurrentFeature((prev) => (prev + 1) % features.length);
-        }, autoPlayInterval);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentFeature((prev) => (prev + 1) % features.length);
+    }, autoPlayInterval);
+    return () => clearInterval(timer);
+  }, [features.length, autoPlayInterval]);
 
-        return () => clearInterval(timer);
-    }, [features.length, autoPlayInterval]);
+  return (
+    <section id="process" className="py-20 md:py-28 bg-green-50/20">
+      <div className="container mx-auto px-6">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-green-900 tracking-tight">{t.process.title}</h2>
+        </div>
 
-    return (
-        <section id="process" className="py-20 md:py-28 bg-white">
-            <div className="container mx-auto max-w-5xl px-6">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-12 md:mb-16 text-center text-green-900 tracking-tight">
-                    {t.process.title}
-                </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-                    {/* Left side: Steps */}
-                    <div className="space-y-8 order-2 md:order-1">
-                        {features.map((feature, index) => (
-                            <div
-                                key={index}
-                                className={cn(
-                                    "flex items-start gap-4 transition-opacity duration-500",
-                                    index === currentFeature ? "opacity-100" : "opacity-40",
-                                    "cursor-pointer"
-                                )}
-                                onClick={() => setCurrentFeature(index)}
-                            >
-                                <div
-                                    className={cn(
-                                        "flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300",
-                                        index === currentFeature
-                                            ? "bg-green-700 border-green-700 text-white scale-110"
-                                            : "bg-white border-slate-300"
-                                    )}
-                                >
-                                    {index <= currentFeature ? (
-                                        <span className="text-xl font-bold">✓</span>
-                                    ) : (
-                                        <span className="text-lg font-semibold text-slate-500">{index + 1}</span>
-                                    )}
-                                </div>
-
-                                <div className="flex-1">
-                                    <h3 className="text-xl font-semibold text-green-900">
-                                        {feature.title}
-                                    </h3>
-                                    <p className="text-slate-600">
-                                        {feature.content}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    {/* Right side: Image */}
-                    <div className="order-1 md:order-2 relative h-[250px] md:h-[400px] overflow-hidden">
-                        {features.map((feature, index) => (
-                                <img
-                                    key={index}
-                                    src={feature.image}
-                                    alt={feature.title}
-                                    className={cn(
-                                        "w-full h-full object-cover rounded-lg shadow-xl absolute inset-0 transition-opacity duration-700 ease-in-out",
-                                        index === currentFeature ? "opacity-100" : "opacity-0"
-                                    )}
-                                />
-                            )
-                        )}
-                        <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-white via-white/80 to-transparent" />
-                    </div>
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div className="order-2 md:order-1 space-y-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="flex items-start gap-4 cursor-pointer"
+                onClick={() => setCurrentFeature(index)}
+              >
+                <div
+                  className={cn(
+                    "w-10 h-10 md:w-12 md:h-12 rounded-full flex-shrink-0 flex items-center justify-center border-2 transition-all duration-300",
+                    index === currentFeature
+                      ? "bg-green-600 border-green-700 text-white scale-110"
+                      : "bg-white border-slate-300 text-slate-500",
+                  )}
+                >
+                  {index <= currentFeature ? (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                  ) : (
+                    <span className="text-xl font-semibold">{index + 1}</span>
+                  )}
                 </div>
-            </div>
-        </section>
-    );
+
+                <div className={cn("transition-opacity duration-300", index === currentFeature ? 'opacity-100' : 'opacity-60 hover:opacity-100')}>
+                  <h3 className="text-xl md:text-2xl font-bold text-green-900">{feature.title}</h3>
+                  <p className="text-md text-slate-600 mt-1">{feature.content}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div
+            className="order-1 md:order-2 relative h-[300px] md:h-[450px] overflow-hidden"
+          >
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className={cn(
+                  "absolute inset-0 w-full h-full transition-all duration-500 ease-in-out",
+                  index === currentFeature ? "opacity-100 transform-none" : "opacity-0 transform translate-y-10"
+                )}
+                style={{ zIndex: index === currentFeature ? 1 : 0 }}
+              >
+                 <img
+                    src={feature.image}
+                    alt={feature.title}
+                    className="w-full h-full object-cover rounded-xl shadow-xl"
+                    loading="lazy"
+                  />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Process;
