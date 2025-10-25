@@ -38,6 +38,7 @@ const defaultSocialLinks = [
   { id: '1', name: 'X', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/x.svg', href: '#x' },
   { id: '2', name: 'Instagram', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/instagram.svg', href: '#instagram' },
   { id: '3', name: 'LinkedIn', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg', href: '#linkedin' },
+  { id: '4', name: 'WhatsApp', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/whatsapp.svg', href: 'http://wa.me/60108828127' },
 ];
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
@@ -164,7 +165,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   className="min-h-[80px]"
                   value={formData.message}
                   onChange={handleChange}
-                  required
                 />
               </div>
 

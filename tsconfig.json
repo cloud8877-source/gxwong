@@ -1,29 +1,30 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "experimentalDecorators": true,
-    "useDefineForClassFields": false,
-    "module": "ESNext",
+    "target": "ESNext", // Specify the target ECMAScript version for compilation.
+    "useDefineForClassFields": true, // Emit `Object.defineProperty` for class fields.
+    "module": "ES2022", // Specify the module code generation.
     "lib": [
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
+      "ESNext", // Include all standard ECMAScript features.
+      "DOM", // Include DOM type definitions.
+      "DOM.Iterable" // Include DOM iterable type definitions.
     ],
-    "skipLibCheck": true,
-    "types": [
-      "node"
-    ],
-    "moduleResolution": "bundler",
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "allowJs": true,
-    "jsx": "react-jsx",
+    "skipLibCheck": true, // Skip type checking of all declaration files.
+    "moduleResolution": "bundler", // Specify how modules are resolved.
+    "isolatedModules": true, // Ensure that each file can be safely transpiled without relying on other imports.
+    "moduleDetection": "auto", // Automatically detect module format.
+    "allowJs": true, // Allow JavaScript files to be compiled.
+    "jsx": "react-jsx", // Support JSX in React projects.
     "paths": {
       "@/*": [
-        "./*"
+        "./*" // Map "@/*" to the root directory.
       ]
     },
-    "allowImportingTsExtensions": true,
-    "noEmit": true
-  }
+    "allowImportingTsExtensions": false, // Disallow importing .ts and .tsx files with extensions.
+    "noEmit": true, // Do not emit output files.
+    "types": []
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.tsx"
+  ]
 }

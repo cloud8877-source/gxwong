@@ -2,7 +2,7 @@ import type { Testimonial, FAQItem, ProcessStep, NavLink, Service, AboutContent,
 
 interface SocialLink {
     id: string;
-    name: 'LinkedIn' | 'Facebook';
+    name: 'LinkedIn' | 'Facebook' | 'WhatsApp';
     href: string;
     iconSrc: string;
 }
@@ -97,7 +97,7 @@ const content = {
         },
         {
           title: 'Execution & Safekeeping',
-          content: 'We guide you through the official signing and witnessing process, and offer secure storage for your important documents.',
+         
           image: 'https://i.ibb.co/svmxgK5R/Gemini-Generated-Image-2kk4jg2kk4jg2kk4.webp',
         },
       ] as ProcessStep[],
@@ -210,7 +210,8 @@ const content = {
         contact: "Contact Info",
         socialLinks: [
             { id: 'linkedin', name: 'LinkedIn', href: 'https://www.linkedin.com/in/gxwong8877', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg' },
-            { id: 'facebook', name: 'Facebook', href: 'https://www.facebook.com/wong.guo.xiang.2025/', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/facebook.svg' }
+            { id: 'facebook', name: 'Facebook', href: 'https://www.facebook.com/wong.guo.xiang.2025/', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/facebook.svg' },
+            { id: 'whatsapp', name: 'WhatsApp', href: 'http://wa.me/60108828127', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/whatsapp.svg' }
         ] as SocialLink[],
         disclaimer: {
             title: "Disclaimer",
@@ -421,7 +422,8 @@ const content = {
         contact: "联系信息",
         socialLinks: [
             { id: 'linkedin', name: 'LinkedIn', href: 'https://www.linkedin.com/in/gxwong8877', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg' },
-            { id: 'facebook', name: 'Facebook', href: 'https://www.facebook.com/wong.guo.xiang.2025/', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/facebook.svg' }
+            { id: 'facebook', name: 'Facebook', href: 'https://www.facebook.com/wong.guo.xiang.2025/', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/facebook.svg' },
+            { id: 'whatsapp', name: 'WhatsApp', href: 'http://wa.me/60108828127', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/whatsapp.svg' }
         ] as SocialLink[],
         disclaimer: {
             title: "免责声明",
