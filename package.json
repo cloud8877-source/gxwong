@@ -13,7 +13,12 @@
     "react-dom": "^18.2.0",
     "framer-motion": "^11.2.10",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.3.0"
+    "tailwind-merge": "^2.3.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "class-variance-authority": "^0.7.0",
+    "@radix-ui/react-label": "^2.1.0",
+    "lucide-react": "^0.395.0",
+    "@radix-ui/react-checkbox": "^1.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface TestimonialStat {
   icon: string;
   text: string;

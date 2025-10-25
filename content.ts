@@ -1,8 +1,10 @@
 import type { Testimonial, FAQItem, ProcessStep, NavLink, Service, AboutContent, CtaSectionContent } from './types';
 
 interface SocialLink {
+    id: string;
     name: 'LinkedIn' | 'Facebook';
     href: string;
+    iconSrc: string;
 }
 
 const content = {
@@ -16,10 +18,9 @@ const content = {
       { href: '#contact', label: 'Contact' },
     ] as NavLink[],
     hero: {
-      preTitle: 'Securing Your Legacy in Malaysia',
       subtitle: {
-        regular: "Your Income Isn't Your Legacy. ",
-        gradient: 'Your Plan Is.',
+        regular: "Secure Your Family's Future with Professional Will & Trust Planning in ",
+        gradient: 'Malaysia.',
       },
       description: 'Navigate the complexities of estate planning with confidence. We provide expert guidance on Wills, Trusts, and Life Insurance to protect your family\'s future.',
       ctaButton: 'Get a Free Consultation',
@@ -178,6 +179,14 @@ const content = {
     contact: {
         title: "Let’s Get In Touch",
         subtitleManual: "Or just reach out manually to us at",
+        briefMessage: "Leave us a brief message",
+        lookingFor: "I'm interested in...",
+        projectTypes: [
+            'Will Writing',
+            'Trust Creation',
+            'Life Insurance Review',
+            'General Inquiry'
+        ],
         form: {
             name: "Full Name",
             email: "Email Address",
@@ -200,8 +209,8 @@ const content = {
         navigation: "Navigation",
         contact: "Contact Info",
         socialLinks: [
-            { name: 'LinkedIn', href: 'https://www.linkedin.com/in/gxwong8877' },
-            { name: 'Facebook', href: 'https://www.facebook.com/wong.guo.xiang.2025/' }
+            { id: 'linkedin', name: 'LinkedIn', href: 'https://www.linkedin.com/in/gxwong8877', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg' },
+            { id: 'facebook', name: 'Facebook', href: 'https://www.facebook.com/wong.guo.xiang.2025/', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/facebook.svg' }
         ] as SocialLink[],
         disclaimer: {
             title: "Disclaimer",
@@ -220,10 +229,9 @@ const content = {
       { href: '#contact', label: '联系我们' },
     ] as NavLink[],
     hero: {
-      preTitle: '守护您在马来西亚的传承',
       subtitle: {
-        regular: '您的收入不是您的传承，',
-        gradient: '您的规划才是。',
+        regular: '通过专业的遗嘱与信托规划，在马来西亚守护您家庭的',
+        gradient: '未来。',
       },
       description: '自信地应对复杂的遗产规划。我们为您的遗嘱、信托和人寿保险提供专业指导，保护您家庭的未来。',
       ctaButton: '获取免费咨询',
@@ -382,6 +390,14 @@ const content = {
     contact: {
         title: "联系我们",
         subtitleManual: "或者直接发送邮件至",
+        briefMessage: "请给我们留下一条简短的信息",
+        lookingFor: "我对...感兴趣",
+        projectTypes: [
+            '遗嘱撰写',
+            '信托设立',
+            '人寿保险审查',
+            '一般咨询'
+        ],
         form: {
             name: "全名",
             email: "电子邮件地址",
@@ -404,8 +420,8 @@ const content = {
         navigation: "网站导航",
         contact: "联系信息",
         socialLinks: [
-            { name: 'LinkedIn', href: 'https://www.linkedin.com/in/gxwong8877' },
-            { name: 'Facebook', href: 'https://www.facebook.com/wong.guo.xiang.2025/' }
+            { id: 'linkedin', name: 'LinkedIn', href: 'https://www.linkedin.com/in/gxwong8877', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg' },
+            { id: 'facebook', name: 'Facebook', href: 'https://www.facebook.com/wong.guo.xiang.2025/', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/facebook.svg' }
         ] as SocialLink[],
         disclaimer: {
             title: "免责声明",
