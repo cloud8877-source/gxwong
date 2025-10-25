@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
                         <ChevronRightIcon />
                     </h1>
                      <TypewriterEffectSmooth words={words} className="justify-center" />
-                    <p className="max-w-2xl mx-auto text-slate-400">
+                    <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mt-4">
                         {t.hero.description}
                     </p>
                     <div className="items-center justify-center gap-x-3 space-y-3 sm:flex sm:space-y-0 pt-4">

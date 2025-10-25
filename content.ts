@@ -1,5 +1,10 @@
 import type { Testimonial, FAQItem, ProcessStep, NavLink, Service, AboutContent, CtaSectionContent } from './types';
 
+interface SocialLink {
+    name: 'LinkedIn' | 'Facebook';
+    href: string;
+}
+
 const content = {
   en: {
     navLinks: [
@@ -41,17 +46,33 @@ const content = {
           {
             icon: 'document',
             title: "Will Writing",
-            description: "Ensure your assets are distributed exactly as you wish. We help you draft legally valid wills, appoint executors, and minimize potential family disputes.",
+            description: "This service focuses on creating a legally binding document to manage your estate after your passing.",
+            points: [
+                "Ensures Your Wishes are Followed: Guarantees that your assets are distributed exactly as you intend.",
+                "Legal Validity: Assists in drafting a legally sound will that will hold up in court.",
+                "Appoints Key Roles: Helps you formally appoint executors who will be responsible for carrying out your instructions.",
+                "Minimizes Conflict: A clear will helps to reduce potential disagreements and legal disputes among family members."
+            ]
           },
           {
             icon: 'shield',
             title: "Trust Creation",
-            description: "Protect and manage your assets for future generations. We assist in setting up living trusts and testamentary trusts to ensure privacy and bypass probate.",
+            description: "This service involves setting up a legal arrangement to protect and manage your assets for your chosen beneficiaries.",
+            points: [
+                "Long-Term Asset Protection: Safeguards and manages your wealth for future generations.",
+                "Privacy and Control: Helps you set up trusts to maintain privacy and avoid the public probate process.",
+                "Bypasses Probate: Allows for a quicker and more direct transfer of assets to your beneficiaries.",
+            ]
           },
           {
             icon: 'insurance',
             title: "Life Insurance Review",
-            description: "Optimize your coverage to secure your family's financial stability. We review your policies and can help establish an Insurance Trust for seamless wealth transfer.",
+            description: "This service is designed to ensure your life insurance policies are optimized to provide maximum security for your family.",
+            points: [
+                "Policy Optimization: Reviews your current insurance coverage to align with your family's financial needs.",
+                "Secures Financial Stability: Aims to provide a secure financial future for your loved ones.",
+                "Insurance Trust Setup: Assists in establishing an Insurance Trust for a seamless transfer of payouts.",
+            ]
           },
         ] as Service[]
     },
@@ -178,6 +199,10 @@ const content = {
         tagline: "Providing clarity and confidence in estate planning for families and businesses across Malaysia.",
         navigation: "Navigation",
         contact: "Contact Info",
+        socialLinks: [
+            { name: 'LinkedIn', href: 'https://www.linkedin.com/in/gxwong8877' },
+            { name: 'Facebook', href: 'https://www.facebook.com/wong.guo.xiang.2025/' }
+        ] as SocialLink[],
         disclaimer: {
             title: "Disclaimer",
             text: "The information on this website is for general informational purposes only and does not constitute legal advice. Please consult with a qualified professional for advice tailored to your specific situation."
@@ -225,17 +250,33 @@ const content = {
           {
             icon: 'document',
             title: "遗嘱撰写",
-            description: "确保您的资产完全按照您的意愿分配。我们帮助您起草具有法律效力的遗嘱，指定执行人，并最大限度地减少潜在的家庭纠纷。",
+            description: "此服务专注于创建一份具有法律约束力的文件，以便在您去世后管理您的遗产。",
+            points: [
+                "确保您的意愿得以遵循：保证您的资产完全按照您的意愿进行分配。",
+                "法律效力：协助起草一份在法庭上具有法律效力的遗嘱。",
+                "指定关键角色：帮助您正式指定执行人，负责执行您的指示。",
+                "减少冲突：一份清晰的遗嘱有助于减少家庭成员之间潜在的分歧和法律纠纷。"
+            ]
           },
           {
             icon: 'shield',
             title: "信托设立",
-            description: "为后代保护和管理您的资产。我们协助设立生前信托和遗嘱信托，以确保隐私并绕过遗嘱认证程序。",
+            description: "此服务涉及设立一项法律安排，为您指定的受益人保护和管理您的资产。",
+            points: [
+                "长期资产保护：为后代守护和管理您的财富。",
+                "隐私与控制：帮助您设立信托，以维护隐私并避免公开的遗嘱认证过程。",
+                "绕过遗嘱认证：允许更快、更直接地将资产转移给您的受益人。",
+            ]
           },
           {
             icon: 'insurance',
             title: "人寿保险审查",
-            description: "优化您的保险覆盖范围，以保障您家庭的财务稳定。我们审查您的保单，并可以帮助设立保险信托，以实现无缝的财富转移。",
+            description: "此服务旨在确保您的人寿保险保单得到优化，为您家庭提供最大的保障。",
+            points: [
+                "保单优化：审查您当前的保险覆盖范围，确保其符合您家庭的财务需求。",
+                "保障财务稳定：旨在为您所爱的人提供一个安全的财务未来。",
+                "保险信托设立：协助建立专属的保险信托，确保保险赔付的无缝转移。",
+            ]
           },
         ] as Service[]
     },
@@ -362,6 +403,10 @@ const content = {
         tagline: "为马来西亚各地的家庭和企业提供清晰、自信的遗产规划。",
         navigation: "网站导航",
         contact: "联系信息",
+        socialLinks: [
+            { name: 'LinkedIn', href: 'https://www.linkedin.com/in/gxwong8877' },
+            { name: 'Facebook', href: 'https://www.facebook.com/wong.guo.xiang.2025/' }
+        ] as SocialLink[],
         disclaimer: {
             title: "免责声明",
             text: "本网站上的信息仅供一般参考之用，不构成法律建议。请咨询合格的专业人士，以获取针对您具体情况的建议。"

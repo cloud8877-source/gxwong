@@ -73,7 +73,7 @@ export const TypewriterEffectSmooth = ({
 
   return (
     <div className={cn("my-6 flex justify-center", className)}>
-      <div className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center">
+      <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center">
         {renderWords()}
       </div>
     </div>

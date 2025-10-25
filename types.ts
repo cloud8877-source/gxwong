@@ -30,6 +30,7 @@ export interface Service {
   icon: string;
   title: string;
   description: string;
+  points: string[];
 }
 
 export interface ProcessStep {
