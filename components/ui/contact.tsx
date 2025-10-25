@@ -5,12 +5,13 @@ import { Textarea } from './textarea';
 import { Label } from './label';
 import { Checkbox } from './checkbox';
 import { useLanguage } from '../../contexts/LanguageContext';
+import { Text } from './text';
 
 interface ContactSectionProps {
   /**
    * The title for the contact section.
    */
-  title?: string;
+  title?: any;
   /**
    * The subtitle or main message for the introductory part.
    */
@@ -112,9 +113,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl rounded-xl flex-grow">
           {/* Left Side: Title */}
           <div className="flex flex-col justify-center p-4 lg:p-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-lg max-w-lg">
-              {title || t.contact.title}
-            </h1>
+            <Text text={title || t.contact.title} className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-lg max-w-lg" />
           </div>
 
           {/* Right Side: Contact Form */}

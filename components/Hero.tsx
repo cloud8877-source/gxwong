@@ -1,19 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
-import { TypewriterEffectSmooth } from './ui/typewriter-effect';
+import { Text } from './ui/text';
 import { AuroraBackground } from './ui/aurora-background';
 
 const Hero: React.FC = () => {
     const { t } = useLanguage();
-
-    const words = [
-        ...t.hero.subtitle.regular.split(' ').map(word => ({ text: word, className: "text-white" })),
-        {
-          text: t.hero.subtitle.gradient,
-          className: "text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-amber-500",
-        },
-    ];
     
     const handleBookingClick = () => {
         const url = 'https://calendar.app.google/4chX2wjD3m5xkovz8';
@@ -42,7 +34,7 @@ const Hero: React.FC = () => {
                 className="relative flex flex-col items-center justify-center px-4"
             >
                 <div className="space-y-5 max-w-4xl mx-auto text-center">
-                     <TypewriterEffectSmooth words={words} className="justify-center" />
+                     <Text text={t.hero.subtitle} />
                     <p className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mt-4">
                         {t.hero.description}
                     </p>
