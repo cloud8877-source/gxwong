@@ -1,0 +1,37 @@
+/* Theme file for Tailwind v4 migration.
+   Contains CSS variables mapped from src/styles/tokens.css so components
+   and CSS-first Tailwind rules can reference the same tokens.
+   This file intentionally uses standard CSS variables (not @theme) so it's
+   safe for both Tailwind v3 and v4 while we migrate.
+*/
+:root {
+  /* Primary */
+  --color-primary-50: #f0f4f8;
+  --color-primary-100: #d9e2ec;
+  --color-primary-200: #b3c2d1;
+  --color-primary-300: #889db0;
+  --color-primary-400: #5d7d96;
+  --color-primary-500: #1e3a5f;
+  --color-primary-600: #172d4a;
+  --color-primary-700: #101f35;
+
+  /* Secondary */
+  --color-secondary-50: #f9f5f0;
+  --color-secondary-100: #f3ebe1;
+  --color-secondary-200: #e7d6c3;
+  --color-secondary-300: #dbb8a0;
+  --color-secondary-400: #d4a574;
+  --color-secondary-500: #cd9251;
+
+  /* Accent */
+  --color-accent-500: #008b8b;
+
+  /* Grays (few used values) */
+  --color-gray-900: #111827;
+  --color-gray-600: #4b5563;
+
+  /* Typography tokens (referencing next/font variables set in layout.tsx) */
+  --font-inter: var(--font-inter);
+  --font-dm-sans: var(--font-dm-sans);
+  --font-jetbrains-mono: var(--font-jetbrains-mono);
+}
