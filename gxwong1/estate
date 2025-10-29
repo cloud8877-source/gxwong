@@ -1,0 +1,14 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Disable Turbopack to avoid configuration issues
+  experimental: {
+    turbo: false,
+  },
+  // Ensure proper module resolution
+  webpack: (config, { isServer }) => {
+    // Add any webpack customizations if needed
+    return config;
+  },
+};
+
+module.exports = nextConfig;
